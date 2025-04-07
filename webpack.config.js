@@ -45,7 +45,7 @@ module.exports = (env, {
         output: {
             filename: PROD ? '[name].[contenthash].js' : '[name].[fullhash].js',
             path: path.resolve(__dirname, 'dist'),
-            publicPath: './',
+            publicPath: '/',
         },
 
         devServer: {
@@ -53,7 +53,7 @@ module.exports = (env, {
                 directory: path.resolve(__dirname, 'static'),
             },
             devMiddleware: {
-                publicPath: '/slotjs/',
+                publicPath: '/',
                 // When sharing the site using ssh -R 80:localhost:8080 ssh.localhost.run
                 // disableHostCheck: true,
             },
@@ -95,7 +95,7 @@ module.exports = (env, {
             new HtmlWebpackPlugin({
                 filename: path.resolve(__dirname, 'dist/index.html'),
                 template: path.resolve(__dirname, 'src/app/components/app/app.template.ejs'),
-                title: 'SlotJS \\ Circular slot machine mobile-first SPA built using JavaScript, CSS variables and Emojis!',
+                title: 'SlotJS',
                 description: pkg.description,
                 favicon: path.resolve(__dirname, 'static/favicon.ico'),
                 inlineSource: '.(js|css)$', // Inline JS and CSS.
@@ -106,6 +106,7 @@ module.exports = (env, {
                 },
                 // We can use templateParameters if more options are required, but it will override all the above.
             }),
+          
 
             new MiniCssExtractPlugin({
                 filename: PROD ? '[name].[contenthash].css' : '[name].[fullhash].css',
